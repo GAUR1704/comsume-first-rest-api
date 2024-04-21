@@ -1,13 +1,13 @@
-package com.prowings.config;
+package com.prowings.myapp.config;
 
 import java.io.IOException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResponseErrorHandler;
 
-import com.prowings.exception.NotFoundException;
+import com.prowings.myapp.exception.NotFoundException;
 
 public class MyRestTemplateResponseErrorHandler implements ResponseErrorHandler {
 
@@ -21,16 +21,16 @@ public class MyRestTemplateResponseErrorHandler implements ResponseErrorHandler 
 	public void handleError(ClientHttpResponse response) throws IOException {
 		 if (response.getStatusCode().is5xxServerError()) {
 	            //Handle SERVER_ERROR
-	            throw new HttpClientErrorException(response.getStatusCode());
+	            throw new HttpServerErrorException(response.getStatusCode());
 	        } else if (response.getStatusCode().is4xxClientError()) {
 	            //Handle CLIENT_ERROR
 	            if (response.getStatusCode() == HttpStatus.METHOD_NOT_ALLOWED) {
 	                throw new NotFoundException("Method not allowed on target api!!");
 	            }
-//	            else if (response.getStatusCode()==HttpStatus.BAD_REQUEST) {
-//	            	
-//	            	throw new NotFoundException("Bad requst on target api!!");
-//	            }
+	            else if (response.getStatusCode()==HttpStatus.BAD_REQUEST) {
+	            	
+	            	throw new NotFoundException("Bad requst on target api!!");
+	            }
 	        }
 	
 

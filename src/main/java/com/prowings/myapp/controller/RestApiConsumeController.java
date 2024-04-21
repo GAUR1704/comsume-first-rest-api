@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prowings.config.MyWebConfig;
+import com.prowings.myapp.config.MyWebConfig;
 import com.prowings.myapp.model.Student;
 import com.prowings.myapp.service.RestApiConsumeService;
 

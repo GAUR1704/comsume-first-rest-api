@@ -12,7 +12,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.UnknownHttpStatusCodeException;
 
-import com.prowings.exception.NotFoundException;
+import com.prowings.myapp.exception.NotFoundException;
 import com.prowings.myapp.model.Student;
 
 @Service
@@ -67,27 +67,27 @@ public class RestApiConsumeServiceImpl implements RestApiConsumeService {
 	public ResponseEntity<List> searchStudentByCity(String city) {
 		System.out.println("inside service::searchStudentByCity()");
 		ResponseEntity<List> fetchedStds = null;
-		try {
+//		try {
 		fetchedStds = restTemplate.getForEntity("/students/searchaa/?city=" + city, List.class);
-		}catch (HttpClientErrorException e) {
-			System.out.println("Client side error!!");
-			e.printStackTrace();
-			throw new NotFoundException("Resourse not found on target api!!");
-			//throw ex and handle it in global ex handler
-		}catch (HttpServerErrorException e) {
-			System.out.println("Server side error!!");
-			e.printStackTrace();
-			throw e;
-			//throw ex and handle it in global ex handler
-		}catch (UnknownHttpStatusCodeException e) {
-			System.out.println("unknownen error!!");
-			e.printStackTrace();
-			//throw ex and handle it in global ex handler
-		}catch (Exception e) {
-			System.out.println("some error!!");
-			e.printStackTrace();
-			//throw ex and handle it in global ex handler
-		}
+//		}catch (HttpClientErrorException e) {
+//			System.out.println("Client side error!!");
+//			e.printStackTrace();
+//			throw new NotFoundException("Resourse not found on target api!!");
+//			//throw exception and handle it in global exception handler
+//		}catch (HttpServerErrorException e) {
+//			System.out.println("Server side error!!");
+//			e.printStackTrace();
+//			throw e;
+//			//throw exception and handle it in global exception handler
+//		}catch (UnknownHttpStatusCodeException e) {
+//			System.out.println("unknownen error!!");
+//			e.printStackTrace();
+//			//throw exception and handle it in global exception handler
+//		}catch (Exception e) {
+//			System.out.println("some error!!");
+//			e.printStackTrace();
+//			//throw exception and handle it in global exception handler
+//		}
 
 		return fetchedStds;
 	}

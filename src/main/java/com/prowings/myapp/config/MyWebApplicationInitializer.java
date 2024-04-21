@@ -1,4 +1,4 @@
-package com.prowings.config;
+package com.prowings.myapp.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
